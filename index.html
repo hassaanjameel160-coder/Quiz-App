@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizArena — History &amp; General Knowledge</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="jspdf.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <span class="logo-text">QuizArena</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark/light mode">
+      <span id="themeIcon">🌙</span>
+    </button>
+  </header>
+
+  <main class="main">
+
+    <section class="screen" id="landingScreen">
+      <div class="card landing-card">
+        <div class="landing-hero">
+          <div class="globe-wrap">🌍</div>
+          <h1 class="landing-title">History &amp; General Knowledge</h1>
+          <p class="landing-sub">Test your knowledge across 10 randomized questions.<br>You have <strong>20 seconds</strong> per question. Good luck!</p>
+        </div>
+        <div class="landing-rules">
+          <div class="rule-item"><span class="rule-icon">📋</span><span>10 randomized multiple-choice questions</span></div>
+          <div class="rule-item"><span class="rule-icon">⏱️</span><span>20-second countdown per question</span></div>
+          <div class="rule-item"><span class="rule-icon">✅</span><span>Instant answer feedback</span></div>
+          <div class="rule-item"><span class="rule-icon">📄</span><span>Download your results as PDF</span></div>
+        </div>
+        <button class="btn btn-primary btn-large" id="startBtn">Start Quiz</button>
+      </div>
+    </section>
+
+    <section class="screen hidden" id="quizScreen">
+      <div class="quiz-shell">
+        <div class="quiz-topbar">
+          <span class="q-counter" id="qCounter">Question 1 / 10</span>
+          <div class="timer-ring-wrap">
+            <svg class="timer-ring" viewBox="0 0 48 48">
+              <circle class="ring-bg" cx="24" cy="24" r="20"/>
+              <circle class="ring-fill" id="ringFill" cx="24" cy="24" r="20"
+                stroke-dasharray="125.66"
+                stroke-dashoffset="0"/>
+            </svg>
+            <span class="timer-num" id="timerNum">20</span>
+          </div>
+          <span class="score-badge" id="scoreBadge">Score: 0</span>
+        </div>
+
+        <div class="seg-bar" id="segBar"></div>
+
+        <div class="card question-card">
+          <p class="question-category" id="qCategory">Category</p>
+          <h2 class="question-text" id="qText">Question goes here?</h2>
+          <div class="options-grid" id="optionsGrid"></div>
+          <div class="feedback-msg hidden" id="feedbackMsg">
+            <span id="feedbackIcon"></span>
+            <span id="feedbackText"></span>
+          </div>
+          <button class="btn btn-next hidden" id="nextBtn">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen hidden" id="resultsScreen">
+      <div class="card results-card" id="resultsCard">
+        <div class="results-hero" id="resultsHero">
+          <div class="trophy" id="trophyIcon">🏆</div>
+          <h2 class="results-title" id="resultsTitle">Great Job!</h2>
+          <p class="results-score" id="resultsScore">You scored <strong id="finalScore">0</strong> out of <strong>10</strong></p>
+          <div class="results-grade" id="resultsGrade"></div>
+        </div>
+        <div class="results-breakdown" id="resultsBreakdown"></div>
+        <div class="results-actions">
+          <button class="btn btn-secondary" id="retryBtn">🔁 Try Again</button>
+          <button class="btn btn-primary" id="downloadBtn">📄 Download PDF</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
